@@ -23,7 +23,10 @@
 
             var self = this;
 
-            this.$el = this.$();
+            // Temporary fixes the `You cannot access this.$() on a component with `tagName: ''` specified.` error
+            // See https://github.com/gigafied/ember-animate/pull/39
+            // this.$el = this.$();
+            this.$el = this.tagName !== '' ? this.$() : null;
 
             this._transitionTo = this._transitionTo || this.transitionTo;
 
